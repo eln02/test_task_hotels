@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_task_hotels/presentation/view/widgets/blue_button.dart';
 
 import '../../fonts.dart';
@@ -24,7 +25,9 @@ class FinalPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 12, left: 12, right: 12),
           child: BlueButton(
             text: 'Супер!',
-            onPressed: () {},
+            onPressed: () {
+              context.go('/hotels');
+            },
           )),
       appBar: customAppBar(context: context, title: 'Заказ оплачен'),
       body: Center(

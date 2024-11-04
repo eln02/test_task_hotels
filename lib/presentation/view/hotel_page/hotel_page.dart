@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_task_hotels/presentation/view/widgets/pictures_carusel.dart';
 import 'package:test_task_hotels/presentation/view/widgets/rating_tag.dart';
 
 import '../../../domain/entities/hotels/hotel_entity.dart';
 import '../../fonts.dart';
 import '../../utils/formatting.dart';
-import '../rooms_page/rooms_page.dart';
 import '../widgets/custom_app_bar.dart';
 import 'about_hotel_section.dart';
 import '../widgets/blue_button.dart';
@@ -100,10 +100,10 @@ class HotelPage extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.all(12),
                 child: BlueButton(text: 'К выбору номера', onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RoomsPage(roomId: hotel.id, title: hotel.name,)),
-                  );
+                  context.push('/hotels/hotel/rooms', extra: {
+                    'roomId': hotel.id,
+                    'title': hotel.name
+                  });
                 },)
             )
           ],

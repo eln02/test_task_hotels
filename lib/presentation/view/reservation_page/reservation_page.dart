@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_task_hotels/presentation/utils/formatting.dart';
-import 'package:test_task_hotels/presentation/view/final_page/final_page.dart';
 import 'package:test_task_hotels/presentation/view/reservation_page/payment_section.dart';
 import 'package:test_task_hotels/presentation/view/reservation_page/reservation_info_section.dart';
 import 'package:test_task_hotels/presentation/view/reservation_page/tourist_form/tourist_form.dart';
@@ -128,12 +128,7 @@ class _ReservationPageState extends State<ReservationPage> {
                                     'Оплатить ${formatPrice(payment)} ₽',
                                 onPressed: () {
                                   if (_validateAllForms()) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const FinalPage()),
-                                    );
+                                    context.push('/hotels/hotel/rooms/reservation/final');
                                   }
                                 },
                               );

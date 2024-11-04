@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_task_hotels/presentation/view/reservation_page/reservation_page.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_task_hotels/presentation/view/widgets/peculiarity_tag.dart';
 import 'package:test_task_hotels/presentation/view/widgets/pictures_carusel.dart';
 
@@ -68,10 +68,7 @@ class RoomCard extends StatelessWidget {
                   height: 14,
                 ),
                 BlueButton(text: 'Выбрать номер', onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ReservationPage(roomId: room.id)),
-                  );
+                  context.push('/hotels/hotel/rooms/reservation', extra: room.id);
                 },),
               ],
             ),

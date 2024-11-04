@@ -13,7 +13,7 @@ import 'package:test_task_hotels/presentation/bloc/hotel_bloc.dart';
 import 'package:test_task_hotels/presentation/bloc/reservation_bloc.dart';
 import 'package:test_task_hotels/presentation/bloc/room_bloc.dart';
 import 'package:test_task_hotels/presentation/bloc/tourist_forms_bloc.dart';
-import 'package:test_task_hotels/presentation/view/all_hotels_page/hotels_page.dart';
+import 'package:test_task_hotels/presentation/router/go_router.dart';
 import 'data/repositories/hotel_repository_impl.dart';
 import 'domain/repositories/hotel_repository.dart';
 import 'domain/repositories/reservation_repository.dart';
@@ -68,7 +68,9 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<TouristFormsBloc>(),
         ),
       ],
-      child: const MaterialApp(home: AllHotelsPage()),
+      child: MaterialApp.router(
+        routerConfig: router,
+      ),
     );
   }
 }

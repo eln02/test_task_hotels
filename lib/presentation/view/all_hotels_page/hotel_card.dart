@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_task_hotels/presentation/view/hotel_page/hotel_page.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_task_hotels/presentation/view/widgets/blue_button.dart';
 import 'package:test_task_hotels/presentation/view/widgets/peculiarity_tag.dart';
 import 'package:test_task_hotels/presentation/view/widgets/pictures_carusel.dart';
@@ -55,10 +55,7 @@ class HotelCard extends StatelessWidget {
                   height: 14,
                 ),
                 BlueButton(text: 'Выбрать отель', onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HotelPage(hotel: hotel)),
-                  );
+                  context.push('/hotels/hotel', extra: hotel);
                 },),
               ],
             ),

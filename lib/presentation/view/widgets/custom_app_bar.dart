@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../fonts.dart';
 
@@ -13,7 +14,7 @@ AppBar customAppBar({required BuildContext context, required String title, bool 
     ),
     leading: showLeading ? IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          context.pop();
         },
         icon: const Icon(Icons.arrow_back_ios)) : null,
   );
