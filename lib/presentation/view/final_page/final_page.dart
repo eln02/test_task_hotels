@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:test_task_hotels/presentation/view/widgets/blue_button.dart';
 
-import '../fonts.dart';
+import '../../fonts.dart';
+import '../widgets/custom_app_bar.dart';
 
 class FinalPage extends StatelessWidget {
   const FinalPage({super.key});
@@ -23,17 +26,7 @@ class FinalPage extends StatelessWidget {
             text: 'Супер!',
             onPressed: () {},
           )),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
-        centerTitle: true,
-        leading: IconButton(
-            onPressed: () {}, icon: const Icon(Icons.arrow_back_ios)),
-        title: const Text(
-          'Заказ оплачен',
-          style: style1,
-        ),
-      ),
+      appBar: customAppBar(context: context, title: 'Заказ оплачен'),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +56,7 @@ class FinalPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Подтвержение заказа может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.',
+                'Подтвержение заказа №${1000 + Random().nextInt(9000)} может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.',
                 textAlign: TextAlign.center,
                 style: style4.copyWith(fontSize: 15),
               ),

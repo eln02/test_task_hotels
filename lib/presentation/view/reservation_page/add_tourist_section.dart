@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../bloc/tourist_forms_bloc.dart';
 import '../../fonts.dart';
 
 class AddTouristSection extends StatelessWidget {
@@ -22,9 +24,23 @@ class AddTouristSection extends StatelessWidget {
               'Добавить туриста',
               style: style1,
             ),
-            SvgPicture.asset(
-              'assets/icons/add_icon.svg',
-              height: 30,
+            GestureDetector(
+              onTap: () {
+                if (context.read<TouristFormsBloc>().state.formKeys.length != 7) {
+                  context.read<TouristFormsBloc>().add(AddFormEvent());
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Максимум семь туристов"),
+                      duration: Duration(seconds: 1),
+                    ),
+                  );
+                }
+              },
+              child: SvgPicture.asset(
+                'assets/icons/add_icon.svg',
+                height: 30,
+              ),
             ),
           ],
         )

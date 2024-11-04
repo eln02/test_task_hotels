@@ -1,35 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_task_hotels/presentation/utils/formatting.dart';
 
+import '../../bloc/tourist_forms_bloc.dart';
 import '../../fonts.dart';
 
 class PaymentSection extends StatelessWidget {
-  const PaymentSection({super.key});
+  final int tourPrice;
+
+  const PaymentSection({super.key, required this.tourPrice});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(10.0),),
-      ),
-      child: Column(
-        children: [
-          Table(
-            columnWidths: const {
-              0: FlexColumnWidth(1),
-              1: FlexColumnWidth(1.3),
-            },
+    const int fuelFee = 9300;
+    const int serviceFee = 2150;
+
+    return BlocBuilder<TouristFormsBloc, TouristFormsState>(
+      builder: (context, state) {
+        int touristsNumber = state.formKeys.length;
+        int fullPrice = tourPrice * touristsNumber;
+        int payment = fullPrice + 9300 + 2150;
+
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          child: Column(
             children: [
-              _data('Тур', '${formatPrice(0)} ₽'),
-              _data('Топливный сбор', '${formatPrice(0)} ₽'),
-              _data('Сервисный сбор', '${formatPrice(0)} ₽'),
-              _data('К оплате', '${formatPrice(0)} ₽', isPay: true),
+              Table(
+                columnWidths: const {
+                  0: FlexColumnWidth(1),
+                  1: FlexColumnWidth(1.3),
+                },
+                children: [
+                  _data('Тур', '${formatPrice(fullPrice)} ₽'),
+                  _data('Топливный сбор', '${formatPrice(fuelFee)} ₽'),
+                  _data('Сервисный сбор', '${formatPrice(serviceFee)} ₽'),
+                  _data('К оплате', '${formatPrice(payment)} ₽', isPay: true),
+                ],
+              ),
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -38,11 +53,19 @@ class PaymentSection extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Text(text1, style: style4, textAlign: TextAlign.left),
+          child: Text(
+            text1,
+            style: style4,
+            textAlign: TextAlign.left,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Text(text2, style: isPay ? style5.copyWith(color: Colors.blue) : style5, textAlign: TextAlign.right),
+          child: Text(
+            text2,
+            style: isPay ? style5.copyWith(color: Colors.blue) : style5,
+            textAlign: TextAlign.right,
+          ),
         ),
       ],
     );
