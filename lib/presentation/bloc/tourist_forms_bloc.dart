@@ -11,6 +11,8 @@ class RemoveFormEvent extends TouristFormsEvent {
   RemoveFormEvent(this.index);
 }
 
+class ResetFormsEvent extends TouristFormsEvent {}
+
 abstract class TouristFormsState {
   final List<GlobalKey<FormState>> formKeys;
 
@@ -29,6 +31,7 @@ class TouristFormsBloc extends Bloc<TouristFormsEvent, TouristFormsState> {
   TouristFormsBloc() : super(TouristFormsInitial()) {
     on<AddFormEvent>(_onAddForm);
     on<RemoveFormEvent>(_onRemoveForm);
+    on<ResetFormsEvent>(_onResetForms);
   }
 
   void _onAddForm(AddFormEvent event, Emitter<TouristFormsState> emit) {
@@ -41,5 +44,9 @@ class TouristFormsBloc extends Bloc<TouristFormsEvent, TouristFormsState> {
     final updatedFormKeys = List<GlobalKey<FormState>>.from(state.formKeys)
       ..removeAt(event.index);
     emit(TouristFormsUpdated(updatedFormKeys));
+  }
+
+  void _onResetForms(ResetFormsEvent event, Emitter<TouristFormsState> emit) {
+    emit(TouristFormsInitial());
   }
 }

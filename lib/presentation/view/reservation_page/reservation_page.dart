@@ -129,6 +129,7 @@ class _ReservationPageState extends State<ReservationPage> {
                                 onPressed: () {
                                   if (_validateAllForms()) {
                                     context.push('/hotels/hotel/rooms/reservation/final');
+                                    context.read<TouristFormsBloc>().add(ResetFormsEvent());
                                   }
                                 },
                               );
