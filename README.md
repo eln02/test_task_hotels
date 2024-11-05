@@ -1,16 +1,14 @@
-# test_task_hotels
+# Тестовое задание
 
-A new Flutter project.
+## [ТЗ](https://docs.google.com/document/d/1czshGCNLS0JOZ0_fNC46LfAUyx6lk57kKnTGjQeFfrk/edit?usp=sharing)
 
-## Getting Started
+## Превью: 
 
-This project is a starting point for a Flutter application.
+https://github.com/user-attachments/assets/d733cb01-89f3-49cf-ae63-776b58951250
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Стек:
+- retrofit
+- bloc
+- go_router
+- freezed
+- get_it
